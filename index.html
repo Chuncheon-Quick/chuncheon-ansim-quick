@@ -4,39 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>춘천안심퀵서비스 | 춘천 퀵배송</title>
+  <title>춘천안심퀵서비스</title>
 
   <meta
     name="description"
-    content="춘천안심퀵서비스 - 춘천지역 소화물 퀵배송 및 장거리 배송"
+    content="춘천안심퀵서비스 - 춘천 및 전국 소화물 퀵서비스"
   >
 
+  <!-- =====================================================
+       Kakao Maps SDK
+  ====================================================== -->
+
+  <script
+    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=1cef4b5acc97670e9a37c3d93cd46997&libraries=services&autoload=false">
+  </script>
+
+  <!-- =====================================================
+       Kakao Postcode
+  ====================================================== -->
+
+  <script
+    src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
+  </script>
+
+
   <style>
+
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
+      margin: 0;
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Noto Sans KR",
         "Malgun Gothic",
         sans-serif;
-      background: #f5f7fa;
-      color: #202124;
+
+      color: #172033;
+      background: #f5f7fb;
       line-height: 1.6;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
     }
 
     a {
@@ -44,274 +53,291 @@
       color: inherit;
     }
 
-    .container {
-      width: min(1100px, calc(100% - 32px));
-      margin: 0 auto;
+    button {
+      font-family: inherit;
     }
 
 
-    /* =========================
+    /* =====================================================
        HEADER
-    ========================= */
+    ====================================================== */
 
     header {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,.96);
+      z-index: 100;
+
+      background: rgba(255,255,255,0.96);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e9edf2;
+
+      border-bottom: 1px solid #e8ebf1;
     }
 
     .header-inner {
-      height: 70px;
+      max-width: 1100px;
+      margin: auto;
+
+      padding: 16px 20px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
     }
 
     .logo {
       font-size: 20px;
       font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: #2563eb;
+      color: #111827;
     }
 
     .header-phone {
-      background: #111827;
-      color: white;
-      padding: 9px 15px;
-      border-radius: 999px;
-      font-size: 14px;
       font-weight: 800;
+      color: #2563eb;
+      white-space: nowrap;
     }
 
 
-    /* =========================
+    /* =====================================================
        HERO
-    ========================= */
+    ====================================================== */
 
     .hero {
-      padding: 80px 0 75px;
       background:
-        radial-gradient(
-          circle at 85% 20%,
-          #dbeafe 0,
-          transparent 35%
-        ),
         linear-gradient(
           135deg,
-          #ffffff,
-          #f3f6fb
+          #0f172a,
+          #1e3a8a
         );
+
+      color: white;
+      padding: 90px 20px;
     }
 
-    .hero-label {
+    .hero-inner {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hero-badge {
       display: inline-block;
-      background: #eff6ff;
-      color: #2563eb;
+
+      padding: 7px 13px;
+
       border-radius: 999px;
-      padding: 7px 12px;
+
+      background: rgba(255,255,255,0.12);
+
       font-size: 13px;
-      font-weight: 900;
       margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-size: clamp(42px, 7vw, 72px);
-      line-height: 1.05;
-      letter-spacing: -4px;
-      margin-bottom: 20px;
-    }
+      margin: 0;
 
-    .hero h1 span {
-      color: #2563eb;
+      font-size: clamp(38px, 7vw, 68px);
+
+      line-height: 1.05;
+      letter-spacing: -2px;
     }
 
     .hero p {
-      color: #667085;
+      margin: 22px 0 0;
+
+      color: #dbeafe;
+
       font-size: 18px;
-      margin-bottom: 30px;
     }
 
-    .hero-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .hero-button {
+      margin-top: 32px;
 
-    .btn-primary,
-    .btn-secondary {
-      border-radius: 14px;
-      padding: 15px 21px;
-      font-size: 15px;
-      font-weight: 900;
-    }
+      padding: 15px 24px;
 
-    .btn-primary {
-      border: none;
-      background: #2563eb;
-      color: white;
-    }
+      border: 0;
+      border-radius: 12px;
 
-    .btn-secondary {
       background: white;
-      border: 1px solid #e2e6eb;
+      color: #1d4ed8;
+
+      font-size: 16px;
+      font-weight: 900;
+
+      cursor: pointer;
     }
 
 
-    /* =========================
-       SECTION
-    ========================= */
+    /* =====================================================
+       COMMON
+    ====================================================== */
 
-    section {
-      padding: 70px 0;
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
     }
 
     .section-title {
       margin-bottom: 28px;
     }
 
-    .section-title small {
-      display: block;
-      color: #2563eb;
-      font-weight: 900;
-      margin-bottom: 5px;
-    }
-
     .section-title h2 {
-      font-size: 32px;
-      letter-spacing: -1.5px;
+      margin: 0;
+
+      font-size: 30px;
+      letter-spacing: -1px;
     }
 
     .section-title p {
-      color: #667085;
-      margin-top: 6px;
+      margin: 8px 0 0;
+
+      color: #6b7280;
     }
 
 
-    /* =========================
+    /* =====================================================
        QUOTE CARD
-    ========================= */
-
-    .quote-section {
-      margin-top: -25px;
-    }
+    ====================================================== */
 
     .quote-card {
       background: white;
-      border: 1px solid #e9edf2;
-      border-radius: 25px;
-      padding: 32px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.08);
+
+      border-radius: 24px;
+
+      padding: 30px;
+
+      box-shadow:
+        0 20px 50px rgba(15,23,42,0.08);
     }
 
-    .quote-grid {
+    .address-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 16px;
     }
 
     .field {
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
-    .field-label {
+    .field label {
       display: block;
+
+      margin-bottom: 8px;
+
+      font-weight: 800;
       font-size: 14px;
-      font-weight: 900;
-      margin-bottom: 9px;
     }
 
-
-    /* =========================
-       ADDRESS
-    ========================= */
-
-    .address-row {
+    .address-input {
       display: flex;
       gap: 8px;
     }
 
-    .address-input {
+    .address-input input {
       flex: 1;
+
       min-width: 0;
-      height: 52px;
-      border: 1px solid #dfe3e8;
-      border-radius: 12px;
-      padding: 0 14px;
+
+      padding: 14px;
+
+      border: 1px solid #d9dee8;
+
+      border-radius: 10px;
+
       background: #f8fafc;
-      outline: none;
+
+      font-size: 15px;
     }
 
-    .address-btn {
-      height: 52px;
-      padding: 0 17px;
-      border: none;
-      border-radius: 12px;
+    .address-button {
+      border: 0;
+
+      padding: 0 16px;
+
+      border-radius: 10px;
+
       background: #111827;
       color: white;
-      font-weight: 900;
-      white-space: nowrap;
+
+      font-weight: 800;
+
+      cursor: pointer;
     }
 
     .detail-input {
       width: 100%;
-      height: 46px;
-      margin-top: 8px;
-      border: 1px solid #dfe3e8;
+
+      padding: 13px 14px;
+
+      border: 1px solid #d9dee8;
+
       border-radius: 10px;
-      padding: 0 13px;
-      outline: none;
+
+      font-size: 15px;
     }
 
 
-    /* =========================
+    /* =====================================================
        DISTANCE
-    ========================= */
+    ====================================================== */
 
     .distance-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 18px;
+      margin: 20px 0;
+
+      padding: 22px;
+
+      border-radius: 16px;
+
       background: #eff6ff;
-      border: 1px solid #dbeafe;
-      border-radius: 15px;
-      margin-bottom: 23px;
+
+      text-align: center;
     }
 
     .distance-title {
+      font-weight: 800;
+
+      color: #1e40af;
+
+      margin-bottom: 4px;
+    }
+
+    #distance {
+      font-size: 30px;
+
       font-weight: 900;
-      color: #344054;
+
+      color: #1d4ed8;
     }
 
-    .distance-status {
-      font-size: 12px;
-      color: #667085;
+    #distanceStatus {
       margin-top: 3px;
-    }
 
-    .distance-value {
-      color: #2563eb;
-      font-size: 25px;
-      font-weight: 950;
-      white-space: nowrap;
+      color: #64748b;
+
+      font-size: 13px;
     }
 
 
-    /* =========================
-       OPTIONS
-    ========================= */
+    /* =====================================================
+       OPTION
+    ====================================================== */
 
-    .option-group {
+    .option-title {
+      margin-bottom: 10px;
+
+      font-weight: 900;
+    }
+
+    .options {
       display: flex;
-      gap: 9px;
+
       flex-wrap: wrap;
+
+      gap: 10px;
     }
 
     .option {
@@ -320,198 +346,272 @@
 
     .option input {
       position: absolute;
+
       opacity: 0;
     }
 
     .option label {
       display: block;
-      padding: 12px 16px;
-      border: 1px solid #dfe3e8;
-      border-radius: 12px;
+
+      padding: 12px 18px;
+
+      border: 1px solid #d9dee8;
+
+      border-radius: 10px;
+
       background: white;
-      font-weight: 800;
+
       cursor: pointer;
+
+      font-weight: 700;
     }
 
     .option input:checked + label {
+      background: #2563eb;
+
       border-color: #2563eb;
-      background: #eff6ff;
-      color: #2563eb;
+
+      color: white;
     }
 
 
-    /* =========================
-       BOX COUNTER
-    ========================= */
+    /* =====================================================
+       BOX COUNT
+    ====================================================== */
 
-    .number-control {
+    .box-control {
       display: flex;
+
       align-items: center;
-      gap: 13px;
+
+      gap: 15px;
     }
 
-    .number-control button {
-      width: 42px;
-      height: 42px;
-      border: 1px solid #dfe3e8;
+    .box-control button {
+      width: 38px;
+      height: 38px;
+
+      border: 1px solid #d9dee8;
+
       border-radius: 10px;
+
       background: white;
-      font-size: 21px;
+
+      font-size: 20px;
+
+      cursor: pointer;
     }
 
-    .number-value {
-      width: 40px;
+    #boxCount {
+      min-width: 30px;
+
       text-align: center;
+
       font-weight: 900;
     }
 
 
-    /* =========================
+    /* =====================================================
        PRICE
-    ========================= */
+    ====================================================== */
 
-    .price-result {
-      margin-top: 25px;
+    .price-box {
+      margin-top: 28px;
+
       padding: 25px;
+
       border-radius: 18px;
+
       background: #111827;
+
       color: white;
+
       text-align: center;
     }
 
-    .price-result .small {
+    .price-label {
       color: #cbd5e1;
-      font-size: 13px;
+
+      font-size: 14px;
     }
 
-    .price {
-      font-size: 38px;
-      font-weight: 950;
-      margin-top: 3px;
+    #estimatedPrice {
+      margin-top: 5px;
+
+      font-size: 36px;
+
+      font-weight: 900;
     }
 
     .price-note {
-      color: #cbd5e1;
-      font-size: 12px;
       margin-top: 6px;
+
+      color: #94a3b8;
+
+      font-size: 13px;
     }
 
     .call-button {
       display: block;
+
       width: 100%;
-      margin-top: 13px;
+
+      margin-top: 15px;
+
       padding: 16px;
-      border: none;
-      border-radius: 14px;
+
+      border: 0;
+
+      border-radius: 12px;
+
       background: #2563eb;
+
       color: white;
-      font-size: 16px;
+
+      font-size: 17px;
+
       font-weight: 900;
-      text-align: center;
+
+      cursor: pointer;
     }
 
 
-    /* =========================
+    /* =====================================================
        TABLE
-    ========================= */
+    ====================================================== */
 
-    .table-card {
-      background: white;
-      border: 1px solid #e9edf2;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .table-title {
-      padding: 20px;
-      border-bottom: 1px solid #edf0f3;
-      font-size: 18px;
-      font-weight: 900;
-    }
-
-    .table-scroll {
+    .table-wrap {
       overflow-x: auto;
+
+      background: white;
+
+      border-radius: 18px;
+
+      box-shadow:
+        0 10px 30px rgba(15,23,42,0.05);
     }
 
     table {
       width: 100%;
-      min-width: 650px;
+
       border-collapse: collapse;
+
+      min-width: 600px;
     }
 
     th,
     td {
-      padding: 13px;
-      border-bottom: 1px solid #edf0f3;
+      padding: 14px;
+
+      border-bottom: 1px solid #edf0f4;
+
       text-align: center;
-      font-size: 14px;
     }
 
     th {
       background: #f8fafc;
+
       font-weight: 900;
     }
 
-    tr:last-child td {
-      border-bottom: none;
-    }
 
-
-    /* =========================
-       INFO
-    ========================= */
+    /* =====================================================
+       INFO CARDS
+    ====================================================== */
 
     .info-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 20px;
     }
 
     .info-card {
-      padding: 25px;
-      border: 1px solid #e9edf2;
-      border-radius: 20px;
       background: white;
+
+      padding: 25px;
+
+      border-radius: 18px;
     }
 
     .info-card h3 {
-      margin-bottom: 13px;
-      font-size: 20px;
+      margin-top: 0;
     }
 
     .info-card ul {
-      padding-left: 19px;
-      color: #475467;
-    }
+      padding-left: 20px;
 
-    .info-card li {
-      margin-bottom: 7px;
-    }
-
-    .warning {
-      background: #fff7ed;
-      border-color: #fed7aa;
-    }
-
-    .warning h3 {
-      color: #c2410c;
+      margin-bottom: 0;
     }
 
 
-    /* =========================
-       MODAL
-    ========================= */
+    /* =====================================================
+       FOOTER
+    ====================================================== */
+
+    footer {
+      background: #0f172a;
+
+      color: #cbd5e1;
+
+      padding: 40px 20px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+
+      margin: auto;
+    }
+
+    .footer-title {
+      color: white;
+
+      font-size: 20px;
+
+      font-weight: 900;
+    }
+
+    .footer-phone {
+      margin-top: 10px;
+
+      font-size: 20px;
+
+      font-weight: 900;
+
+      color: white;
+    }
+
+    .footer-notice {
+      margin-top: 20px;
+
+      font-size: 13px;
+
+      color: #94a3b8;
+    }
+
+
+    /* =====================================================
+       ADDRESS MODAL
+    ====================================================== */
 
     .modal {
       display: none;
+
       position: fixed;
+
       inset: 0;
-      z-index: 3000;
-      background: rgba(0,0,0,.55);
-      align-items: center;
-      justify-content: center;
+
+      z-index: 999;
+
+      background: rgba(15,23,42,0.65);
+
       padding: 20px;
+
+      align-items: center;
+
+      justify-content: center;
     }
 
     .modal.active {
@@ -519,71 +619,59 @@
     }
 
     .modal-box {
-      width: min(500px, 100%);
-      max-height: 90vh;
-      overflow: auto;
+      width: 100%;
+
+      max-width: 500px;
+
+      height: 600px;
+
       background: white;
-      border-radius: 20px;
-      padding: 25px;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
       position: relative;
     }
 
     .modal-close {
       position: absolute;
-      right: 14px;
-      top: 10px;
-      border: none;
-      background: none;
-      font-size: 27px;
-    }
 
+      right: 12px;
+      top: 12px;
 
-    /* =========================
-       FOOTER
-    ========================= */
+      z-index: 10;
 
-    footer {
+      width: 38px;
+      height: 38px;
+
+      border: 0;
+
+      border-radius: 50%;
+
       background: #111827;
-      color: #d1d5db;
-      padding: 40px 0;
-    }
 
-    .footer-main {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-title {
       color: white;
-      font-size: 20px;
-      font-weight: 900;
+
+      font-size: 18px;
+
+      cursor: pointer;
     }
 
-    .footer-phone {
-      color: white;
-      font-size: 22px;
-      font-weight: 900;
-    }
-
-    .footer-bottom {
-      margin-top: 25px;
-      padding-top: 20px;
-      border-top: 1px solid #374151;
-      color: #9ca3af;
-      font-size: 12px;
+    #postcode {
+      width: 100%;
+      height: 100%;
     }
 
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
 
     @media (max-width: 700px) {
 
       .header-inner {
-        height: 62px;
+        padding: 14px 16px;
       }
 
       .logo {
@@ -591,582 +679,492 @@
       }
 
       .header-phone {
-        font-size: 12px;
-        padding: 8px 12px;
+        font-size: 14px;
       }
 
       .hero {
-        padding: 55px 0;
-      }
-
-      .hero h1 {
-        letter-spacing: -2px;
+        padding: 70px 20px;
       }
 
       .hero p {
-        font-size: 15px;
+        font-size: 16px;
       }
 
-      section {
-        padding: 50px 0;
+      .container {
+        padding: 50px 16px;
       }
 
       .quote-card {
         padding: 20px;
-        border-radius: 20px;
       }
 
-      .quote-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .address-row,
       .info-grid {
         grid-template-columns: 1fr;
       }
 
-      .section-title h2 {
-        font-size: 27px;
+      .address-input {
+        flex-direction: column;
       }
 
-      .address-btn {
-        padding: 0 12px;
+      .address-button {
+        padding: 12px;
       }
 
-      .distance-value {
-        font-size: 21px;
-      }
-
-      .price {
-        font-size: 34px;
-      }
     }
+
   </style>
-
-
-  <!-- =====================================================
-       카카오 지도 SDK
-
-       ★★★★★ 중요 ★★★★★
-
-       YOUR_KAKAO_JAVASCRIPT_KEY
-       부분에 네가 아까 찾은
-       "JavaScript 키"를 넣어야 함.
-       ===================================================== -->
-
-  <script
-    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=1cef4b5acc97670e9a37c3d93cd46997&libraries=services&autoload=false">
-  </script>
-
-
-  <!-- 카카오 주소검색 -->
-  <script
-    src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
-  </script>
-
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
 
-<header>
+  <header>
 
-  <div class="container header-inner">
+    <div class="header-inner">
 
-    <div class="logo">
-      춘천안심<span>퀵서비스</span>
-    </div>
-
-    <a
-      class="header-phone"
-      href="tel:010-9330-3119"
-    >
-      010-9330-3119
-    </a>
-
-  </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero">
-
-  <div class="container">
-
-    <div class="hero-label">
-      춘천지역 소화물 퀵배송
-    </div>
-
-    <h1>
-      빠르게.<br>
-      <span>안전하게.</span>
-    </h1>
-
-    <p>
-      출발지와 도착지를 입력하면<br>
-      자동차 주행거리를 기준으로 예상 배송요금을 확인할 수 있습니다.
-    </p>
-
-    <div class="hero-buttons">
-
-      <button
-        class="btn-primary"
-        onclick="scrollToQuote()"
-      >
-        🚚 퀵서비스 견적 확인
-      </button>
+      <div class="logo">
+        춘천안심퀵서비스
+      </div>
 
       <a
-        class="btn-secondary"
+        class="header-phone"
         href="tel:010-9330-3119"
       >
-        📞 전화 접수
+        010-9330-3119
       </a>
 
     </div>
 
-  </div>
-
-</section>
+  </header>
 
 
 
-<!-- =====================================================
-     QUOTE
-===================================================== -->
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
 
-<section
-  class="quote-section"
-  id="quote"
->
+  <section class="hero">
 
-  <div class="container">
+    <div class="hero-inner">
 
-    <div class="section-title">
+      <div class="hero-badge">
+        춘천 소화물 퀵서비스
+      </div>
 
-      <small>QUICK QUOTE</small>
-
-      <h2>
-        배송요금 예상하기
-      </h2>
+      <h1>
+        빠르게.<br>
+        안전하게.
+      </h1>
 
       <p>
-        정확한 주소를 선택하면 자동차 주행거리를 기준으로 요금을 계산합니다.
+        춘천 시내부터 장거리까지<br>
+        소화물 배송을 안전하게 도와드립니다.
       </p>
+
+      <button
+        class="hero-button"
+        onclick="scrollToQuote()"
+      >
+        퀵서비스 견적 확인
+      </button>
 
     </div>
 
-
-    <div class="quote-card">
-
-
-      <!-- 출발지 / 도착지 -->
-
-      <div class="quote-grid">
-
-
-        <!-- 출발지 -->
-
-        <div class="field">
-
-          <label class="field-label">
-            출발지
-          </label>
-
-          <div class="address-row">
-
-            <input
-              id="pickupAddress"
-              class="address-input"
-              type="text"
-              placeholder="주소 검색을 눌러주세요"
-              readonly
-            >
-
-            <button
-              class="address-btn"
-              onclick="openAddressSearch('pickup')"
-            >
-              주소 검색
-            </button>
-
-          </div>
-
-          <input
-            id="pickupDetail"
-            class="detail-input"
-            type="text"
-            placeholder="상세주소 입력"
-          >
-
-        </div>
+  </section>
 
 
 
-        <!-- 도착지 -->
+  <!-- =====================================================
+       QUOTE
+  ====================================================== -->
 
-        <div class="field">
+  <section id="quote">
 
-          <label class="field-label">
-            도착지
-          </label>
+    <div class="container">
 
-          <div class="address-row">
+      <div class="section-title">
 
-            <input
-              id="dropoffAddress"
-              class="address-input"
-              type="text"
-              placeholder="주소 검색을 눌러주세요"
-              readonly
-            >
+        <h2>
+          퀵서비스 견적 확인
+        </h2>
 
-            <button
-              class="address-btn"
-              onclick="openAddressSearch('dropoff')"
-            >
-              주소 검색
-            </button>
-
-          </div>
-
-          <input
-            id="dropoffDetail"
-            class="detail-input"
-            type="text"
-            placeholder="상세주소 입력"
-          >
-
-        </div>
+        <p>
+          출발지와 도착지를 입력하면 예상 배송비를 확인할 수 있습니다.
+        </p>
 
       </div>
 
 
+      <div class="quote-card">
 
-      <!-- 거리 -->
 
-      <div class="distance-box">
+        <!-- 출발 / 도착 -->
 
-        <div>
+        <div class="address-row">
+
+
+          <div class="field">
+
+            <label>
+              출발지
+            </label>
+
+            <div class="address-input">
+
+              <input
+                id="pickupAddress"
+                type="text"
+                placeholder="주소를 검색해주세요"
+                readonly
+              >
+
+              <button
+                class="address-button"
+                onclick="openAddressSearch('pickup')"
+              >
+                주소 검색
+              </button>
+
+            </div>
+
+            <input
+              id="pickupDetail"
+              class="detail-input"
+              type="text"
+              placeholder="상세주소 입력"
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label>
+              도착지
+            </label>
+
+            <div class="address-input">
+
+              <input
+                id="dropoffAddress"
+                type="text"
+                placeholder="주소를 검색해주세요"
+                readonly
+              >
+
+              <button
+                class="address-button"
+                onclick="openAddressSearch('dropoff')"
+              >
+                주소 검색
+              </button>
+
+            </div>
+
+            <input
+              id="dropoffDetail"
+              class="detail-input"
+              type="text"
+              placeholder="상세주소 입력"
+            >
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 거리 -->
+
+        <div class="distance-box">
 
           <div class="distance-title">
             🚗 자동차 예상 주행거리
           </div>
 
-          <div
-            id="distanceStatus"
-            class="distance-status"
-          >
+          <div id="distance">
+            - km
+          </div>
+
+          <div id="distanceStatus">
             출발지와 도착지를 선택해주세요.
           </div>
 
         </div>
 
-        <div
-          id="distanceValue"
-          class="distance-value"
+
+
+        <!-- 무게 -->
+
+        <div class="field">
+
+          <div class="option-title">
+            물품 무게
+          </div>
+
+          <div class="options">
+
+            <div class="option">
+
+              <input
+                type="radio"
+                name="weight"
+                id="weight5"
+                value="5"
+                checked
+                onchange="calculateQuote()"
+              >
+
+              <label for="weight5">
+                5kg 이하
+              </label>
+
+            </div>
+
+
+            <div class="option">
+
+              <input
+                type="radio"
+                name="weight"
+                id="weight20"
+                value="20"
+                onchange="calculateQuote()"
+              >
+
+              <label for="weight20">
+                5kg 초과 ~ 20kg 이하
+              </label>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 구매대행 -->
+
+        <div class="field">
+
+          <div class="option-title">
+            구매대행
+          </div>
+
+          <div class="options">
+
+            <div class="option">
+
+              <input
+                type="radio"
+                name="store"
+                id="store0"
+                value="0"
+                checked
+                onchange="calculateQuote()"
+              >
+
+              <label for="store0">
+                없음
+              </label>
+
+            </div>
+
+
+            <div class="option">
+
+              <input
+                type="radio"
+                name="store"
+                id="store1"
+                value="1"
+                onchange="calculateQuote()"
+              >
+
+              <label for="store1">
+                1개 매장
+              </label>
+
+            </div>
+
+
+            <div class="option">
+
+              <input
+                type="radio"
+                name="store"
+                id="store2"
+                value="2"
+                onchange="calculateQuote()"
+              >
+
+              <label for="store2">
+                2개 매장
+              </label>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 추가 박스 -->
+
+        <div class="field">
+
+          <div class="option-title">
+            15kg 이상 추가 박스
+          </div>
+
+          <div class="box-control">
+
+            <button
+              onclick="changeBox(-1)"
+            >
+              −
+            </button>
+
+            <span id="boxCount">
+              0
+            </span>
+
+            <button
+              onclick="changeBox(1)"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 가격 -->
+
+        <div class="price-box">
+
+          <div class="price-label">
+            예상 배송비
+          </div>
+
+          <div id="estimatedPrice">
+            주소를 선택해주세요
+          </div>
+
+          <div class="price-note">
+            실제 배송비는 배송 환경에 따라 달라질 수 있습니다.
+          </div>
+
+        </div>
+
+
+        <a
+          href="tel:010-9330-3119"
+          class="call-button"
         >
-          - km
-        </div>
+          📞 010-9330-3119 전화 문의
+        </a>
+
 
       </div>
-
-
-
-      <!-- 무게 -->
-
-      <div class="field">
-
-        <label class="field-label">
-          물품 무게
-        </label>
-
-        <div class="option-group">
-
-
-          <div class="option">
-
-            <input
-              type="radio"
-              id="weight5"
-              name="weight"
-              value="5"
-              checked
-              onchange="calculateQuote()"
-            >
-
-            <label for="weight5">
-              5kg 이하
-            </label>
-
-          </div>
-
-
-          <div class="option">
-
-            <input
-              type="radio"
-              id="weight20"
-              name="weight"
-              value="20"
-              onchange="calculateQuote()"
-            >
-
-            <label for="weight20">
-              5kg 초과 ~ 20kg 이하
-            </label>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-
-
-      <!-- 구매대행 -->
-
-      <div class="field">
-
-        <label class="field-label">
-          구매대행 / 매장 방문
-        </label>
-
-        <div class="option-group">
-
-
-          <div class="option">
-
-            <input
-              type="radio"
-              id="store0"
-              name="store"
-              value="0"
-              checked
-              onchange="calculateQuote()"
-            >
-
-            <label for="store0">
-              없음
-            </label>
-
-          </div>
-
-
-          <div class="option">
-
-            <input
-              type="radio"
-              id="store1"
-              name="store"
-              value="1"
-              onchange="calculateQuote()"
-            >
-
-            <label for="store1">
-              1곳 +3,000원
-            </label>
-
-          </div>
-
-
-          <div class="option">
-
-            <input
-              type="radio"
-              id="store2"
-              name="store"
-              value="2"
-              onchange="calculateQuote()"
-            >
-
-            <label for="store2">
-              2곳 +6,000원
-            </label>
-
-          </div>
-
-
-        </div>
-
-        <small style="display:block;margin-top:8px;color:#667085;">
-          음식점 · 약국 · 편의점 · 마트 구매대행
-        </small>
-
-      </div>
-
-
-
-      <!-- 추가 박스 -->
-
-      <div class="field">
-
-        <label class="field-label">
-          15kg 이상 추가 박스
-        </label>
-
-        <div class="number-control">
-
-          <button
-            onclick="changeBox(-1)"
-          >
-            −
-          </button>
-
-          <div
-            id="boxCount"
-            class="number-value"
-          >
-            0
-          </div>
-
-          <button
-            onclick="changeBox(1)"
-          >
-            +
-          </button>
-
-        </div>
-
-        <small style="display:block;margin-top:8px;color:#667085;">
-          추가 1개당 +3,000원
-        </small>
-
-      </div>
-
-
-
-      <!-- 예상 가격 -->
-
-      <div class="price-result">
-
-        <div class="small">
-          예상 배송요금
-        </div>
-
-        <div
-          id="estimatedPrice"
-          class="price"
-        >
-          주소를 선택해주세요
-        </div>
-
-        <div class="price-note">
-          배송 환경에 따라 실제 요금은 달라질 수 있습니다.
-        </div>
-
-      </div>
-
-
-
-      <!-- 전화 -->
-
-      <a
-        class="call-button"
-        href="tel:010-9330-3119"
-      >
-        📞 전화로 배송 접수하기
-      </a>
-
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
 
-<!-- =====================================================
-     PRICE TABLE
-===================================================== -->
+  <!-- =====================================================
+       PRICE TABLE
+  ====================================================== -->
 
-<section>
+  <section>
 
-  <div class="container">
+    <div class="container">
 
-    <div class="section-title">
+      <div class="section-title">
 
-      <small>PRICE</small>
+        <h2>
+          춘천 시내 배송 요금
+        </h2>
 
-      <h2>
-        춘천지역 퀵배송 요금표
-      </h2>
+        <p>
+          1층 → 1층 기준이며 배송 환경에 따라 달라질 수 있습니다.
+        </p>
 
-      <p>
-        1층 → 1층 배송비 기준입니다.
-      </p>
-
-    </div>
-
-
-
-    <!-- 춘천 -->
-
-    <div class="table-card">
-
-      <div class="table-title">
-        춘천지역 기본 요금
       </div>
 
-      <div class="table-scroll">
+
+      <div class="table-wrap">
 
         <table>
 
           <thead>
 
             <tr>
-              <th>배송거리</th>
-              <th>5kg 이하</th>
-              <th>5~20kg</th>
+
+              <th>
+                거리
+              </th>
+
+              <th>
+                5kg 이하
+              </th>
+
+              <th>
+                5~20kg
+              </th>
+
             </tr>
 
           </thead>
 
+
           <tbody>
 
             <tr>
-              <td>1.5km 이하</td>
+              <td>1.5km</td>
               <td>8,000원</td>
               <td>10,000원</td>
             </tr>
 
             <tr>
-              <td>1.5~3km</td>
+              <td>3km</td>
               <td>10,000원</td>
               <td>13,000원</td>
             </tr>
 
             <tr>
-              <td>3~5km</td>
+              <td>5km</td>
               <td>15,000원</td>
               <td>18,000원</td>
             </tr>
 
             <tr>
-              <td>5~8km</td>
+              <td>8km</td>
               <td>18,000원</td>
               <td>20,000원</td>
             </tr>
 
             <tr>
-              <td>8~15km</td>
+              <td>15km</td>
               <td>20,000원</td>
               <td>22,000원</td>
             </tr>
 
             <tr>
-              <td>15~20km</td>
+              <td>20km</td>
               <td>23,000원</td>
               <td>25,000원</td>
             </tr>
@@ -1179,35 +1177,64 @@
 
     </div>
 
+  </section>
 
 
-    <!-- 장거리 -->
 
-    <div class="table-card">
+  <!-- =====================================================
+       LONG DISTANCE
+  ====================================================== -->
 
-      <div class="table-title">
-        춘천안심 장거리 퀵배송
+  <section>
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>
+          장거리 배송 요금
+        </h2>
+
+        <p>
+          평일 주간 기준이며 배송 환경에 따라 달라질 수 있습니다.
+        </p>
+
       </div>
 
-      <div class="table-scroll">
+
+      <div class="table-wrap">
 
         <table>
 
           <thead>
 
             <tr>
-              <th>배송지역</th>
-              <th>거리</th>
-              <th>5kg 이하</th>
-              <th>5~20kg</th>
+
+              <th>
+                구간
+              </th>
+
+              <th>
+                거리
+              </th>
+
+              <th>
+                5kg 이하
+              </th>
+
+              <th>
+                5~20kg
+              </th>
+
             </tr>
 
           </thead>
 
+
           <tbody>
 
             <tr>
-              <td>홍천 · 가평 시내</td>
+              <td>홍천 / 가평 시내</td>
               <td>30km</td>
               <td>40,000원</td>
               <td>45,000원</td>
@@ -1221,14 +1248,14 @@
             </tr>
 
             <tr>
-              <td>양구 · 청평 시내</td>
+              <td>양구 / 청평 시내</td>
               <td>50km</td>
               <td>60,000원</td>
               <td>65,000원</td>
             </tr>
 
             <tr>
-              <td>원주 · 남양주 인근</td>
+              <td>원주 / 남양주 인근</td>
               <td>80km</td>
               <td>90,000원</td>
               <td>95,000원</td>
@@ -1242,7 +1269,7 @@
             </tr>
 
             <tr>
-              <td>일산 · 수원 · 속초</td>
+              <td>일산 / 수원 / 속초</td>
               <td>150km</td>
               <td>160,000원</td>
               <td>170,000원</td>
@@ -1256,1163 +1283,884 @@
 
     </div>
 
+  </section>
 
 
-    <!-- 추가요금 -->
 
-    <div class="info-card">
+  <!-- =====================================================
+       GUIDE
+  ====================================================== -->
 
-      <strong>
-        추가요금 안내
-      </strong>
+  <section>
 
-      <ul style="margin-top:10px;">
+    <div class="container">
 
-        <li>
-          약국 · 편의점 · 음식점 구매대행:
-          매장 한 곳당 +3,000원
-        </li>
+      <div class="section-title">
 
-        <li>
-          15kg 이상 박스 추가 배송:
-          1개당 +3,000원
-        </li>
+        <h2>
+          배송 안내
+        </h2>
 
-        <li>
-          카드 · 현금영수증 결제:
-          부가세 별도
-        </li>
+      </div>
 
-        <li>
-          배송환경에 따라 20% 이상 추가 비용이 발생할 수 있습니다.
-        </li>
 
-      </ul>
+      <div class="info-grid">
+
+
+        <div class="info-card">
+
+          <h3>
+            📦 배송 가능 물품
+          </h3>
+
+          <ul>
+
+            <li>
+              무게 20kg 이하 소화물
+            </li>
+
+            <li>
+              40cm × 40cm × 60cm 이하
+            </li>
+
+            <li>
+              포장된 음식
+            </li>
+
+            <li>
+              약국·편의점·마트 구매 물품
+            </li>
+
+          </ul>
+
+        </div>
+
+
+
+        <div class="info-card">
+
+          <h3>
+            🚫 배송 불가능 물품
+          </h3>
+
+          <ul>
+
+            <li>
+              20kg 이상 또는 규격 초과 물품
+            </li>
+
+            <li>
+              현금·수표·유가증권·상품권 등
+            </li>
+
+            <li>
+              독극물·화약류·인화물질 등
+            </li>
+
+            <li>
+              마약류·밀수품·군수품 등 불법 유통물
+            </li>
+
+            <li>
+              살아있는 동물 및 기타 제한 물품
+            </li>
+
+          </ul>
+
+        </div>
+
+
+      </div>
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
 
-<!-- =====================================================
-     GUIDE
-===================================================== -->
+  <!-- =====================================================
+       NOTICE
+  ====================================================== -->
 
-<section>
+  <section>
 
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>GUIDE</small>
-
-      <h2>
-        배송 이용 안내
-      </h2>
-
-    </div>
-
-
-
-    <div class="info-grid">
-
-
-      <!-- 가능 -->
+    <div class="container">
 
       <div class="info-card">
 
         <h3>
-          📦 배송 가능 물품
+          이용 안내
         </h3>
 
         <ul>
 
           <li>
-            무게 20kg 이하 소화물
+            배송비용 선불 결제 후 배송 예약이 시작됩니다.
           </li>
 
           <li>
-            40cm × 40cm × 60cm 이하 소화물
+            카드 및 현금영수증 발행 결제 시 부가세 별도입니다.
           </li>
 
           <li>
-            판매 매장에 주문 후 결제된 포장 음식
+            약국·편의점·마트·음식점 구매대행은 매장당 3,000원이 추가됩니다.
           </li>
 
           <li>
-            약국 · 편의점 · 마트 구매 물품
+            15kg 이상 추가 박스는 박스당 3,000원이 추가됩니다.
+          </li>
+
+          <li>
+            악천후·주말·공휴일·교통체증·주차곤란·엘리베이터 미설치 등 배송 환경에 따라 20% 이상 추가될 수 있습니다.
+          </li>
+
+          <li>
+            길거리 픽업 및 길거리 배송은 하지 않습니다.
+          </li>
+
+          <li>
+            보이스피싱 물품, 마약류 등 불법 유통 의혹 물품은 경찰서에 신고합니다.
           </li>
 
         </ul>
 
       </div>
 
+    </div>
+
+  </section>
 
 
-      <!-- 불가능 -->
 
-      <div class="info-card warning">
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
 
-        <h3>
-          ⚠️ 배송 불가능 물품
-        </h3>
+  <footer>
 
-        <ul>
+    <div class="footer-inner">
 
-          <li>
-            20kg 이상 또는 크기 초과 물품
-          </li>
-
-          <li>
-            현금 · 어음 · 수표 · 유가증권
-          </li>
-
-          <li>
-            신용카드 · 통장 · 상품권 등
-          </li>
-
-          <li>
-            독극물 · 화약류 · 인화물질
-          </li>
-
-          <li>
-            마약류 · 밀수품 · 군수품 등 불법 유통물
-          </li>
-
-          <li>
-            살아있는 동물
-          </li>
-
-          <li>
-            법령 또는 선량한 풍속에 반하는 물품
-          </li>
-
-        </ul>
-
+      <div class="footer-title">
+        춘천안심퀵서비스
       </div>
 
+      <div class="footer-phone">
+        010-9330-3119
+      </div>
+
+      <div class="footer-notice">
+        개인 소화물 퀵 배달 · 구매 배달 대행
+      </div>
 
     </div>
 
+  </footer>
 
 
-    <div
-      class="info-card"
-      style="margin-top:20px;"
-    >
 
-      <h3>
-        📌 이용 전 꼭 확인해주세요
-      </h3>
+  <!-- =====================================================
+       ADDRESS MODAL
+  ====================================================== -->
 
-      <ul>
+  <div
+    id="addressModal"
+    class="modal"
+  >
 
-        <li>
-          배송비용 선불 결제 후 배송 예약이 시작됩니다.
-        </li>
+    <div class="modal-box">
 
-        <li>
-          길거리 픽업 및 길거리 배송은 하지 않습니다.
-        </li>
+      <button
+        class="modal-close"
+        onclick="closeAddressSearch()"
+      >
+        ×
+      </button>
 
-        <li>
-          보이스피싱 물품, 마약류 등 불법 유통 의혹 물품은 경찰서에 신고합니다.
-        </li>
-
-        <li>
-          눈 · 비 등 악천후, 주말 · 휴일,
-          출퇴근 혼잡시간, 저녁 6시 이후 야간배송 등은
-          추가 비용이 발생할 수 있습니다.
-        </li>
-
-      </ul>
+      <div id="postcode"></div>
 
     </div>
 
   </div>
 
-</section>
 
 
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+  <script>
 
-<footer>
+    let pickupCoords = null;
+    let dropoffCoords = null;
 
-  <div class="container">
+    let currentAddressType = null;
 
-    <div class="footer-main">
+    let boxCount = 0;
 
-      <div>
+    window.currentDistance = null;
 
-        <div class="footer-title">
-          춘천안심퀵서비스
-        </div>
 
-        <div>
-          춘천지역 소화물 퀵배송
-        </div>
 
-      </div>
+    /* =====================================================
+       견적 영역 이동
+    ====================================================== */
 
+    function scrollToQuote() {
 
-      <div>
-
-        <div>
-          배송 문의
-        </div>
-
-        <div class="footer-phone">
-          010-9330-3119
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-      배송 환경에 따라 최종 배송요금이 달라질 수 있습니다.
-    </div>
-
-  </div>
-
-</footer>
-
-
-
-<!-- =====================================================
-     ADDRESS MODAL
-===================================================== -->
-
-<div
-  id="addressModal"
-  class="modal"
->
-
-  <div class="modal-box">
-
-    <button
-      class="modal-close"
-      onclick="closeAddressSearch()"
-    >
-      ×
-    </button>
-
-    <h3 style="margin-bottom:15px;">
-      주소 검색
-    </h3>
-
-    <div id="postcode"></div>
-
-  </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-<script>
-
-
-/* =====================================================
-   기본 변수
-===================================================== */
-
-let currentAddressType = null;
-
-let pickupCoords = null;
-
-let dropoffCoords = null;
-
-let boxCount = 0;
-
-let kakaoReady = false;
-
-window.currentDistance = null;
-
-
-
-/* =====================================================
-   페이지 시작
-===================================================== */
-
-window.addEventListener("load", function() {
-
-  /*
-   * 카카오 지도 SDK가 정상적으로 불러왔는지 확인
-   */
-
-  if (
-    typeof kakao === "undefined" ||
-    !kakao.maps
-  ) {
-
-    console.error(
-      "카카오 지도 SDK가 로드되지 않았습니다."
-    );
-
-    return;
-
-  }
-
-
-  /*
-   * 카카오 지도 기능 시작
-   */
-
-  kakao.maps.load(function() {
-
-    kakaoReady = true;
-
-    console.log(
-      "카카오 지도 서비스 준비 완료"
-    );
-
-  });
-
-});
-
-
-
-/* =====================================================
-   견적 영역 이동
-===================================================== */
-
-function scrollToQuote() {
-
-  document
-    .getElementById("quote")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
-
-}
-
-
-
-/* =====================================================
-   주소 검색 열기
-===================================================== */
-
-function openAddressSearch(type) {
-
-  currentAddressType = type;
-
-
-  document
-    .getElementById("addressModal")
-    .classList
-    .add("active");
-
-
-  /*
-   * 카카오 주소검색
-   */
-
-  new daum.Postcode({
-
-    oncomplete: function(data) {
-
-
-      /*
-       * 도로명 주소 우선
-       */
-
-      let address =
-        data.roadAddress;
-
-
-      /*
-       * 도로명주소가 없으면 지번주소
-       */
-
-      if (!address) {
-
-        address =
-          data.jibunAddress;
-
-      }
-
-
-      /*
-       * 출발지
-       */
-
-      if (
-        currentAddressType === "pickup"
-      ) {
-
-        document
-          .getElementById(
-            "pickupAddress"
-          )
-          .value = address;
-
-
-        /*
-         * 주소를 좌표로 변환
-         */
-
-        geocodeAddress(
-          address,
-          "pickup"
-        );
-
-      }
-
-
-      /*
-       * 도착지
-       */
-
-      if (
-        currentAddressType === "dropoff"
-      ) {
-
-        document
-          .getElementById(
-            "dropoffAddress"
-          )
-          .value = address;
-
-
-        /*
-         * 주소를 좌표로 변환
-         */
-
-        geocodeAddress(
-          address,
-          "dropoff"
-        );
-
-      }
-
-
-      /*
-       * 주소검색창 닫기
-       */
-
-      closeAddressSearch();
+      document
+        .getElementById("quote")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
 
     }
 
-  }).embed(
-    document.getElementById(
-      "postcode"
-    )
-  );
-
-}
 
 
+    /* =====================================================
+       주소 검색
+    ====================================================== */
 
-/* =====================================================
-   주소 검색 닫기
-===================================================== */
+    function openAddressSearch(type) {
 
-function closeAddressSearch() {
+      currentAddressType = type;
 
-  document
-    .getElementById(
-      "addressModal"
-    )
-    .classList
-    .remove("active");
-
-}
+      document
+        .getElementById("addressModal")
+        .classList
+        .add("active");
 
 
+      new daum.Postcode({
 
-/* =====================================================
-   주소 → 좌표 변환
-===================================================== */
+        oncomplete: function(data) {
 
-function geocodeAddress(
-  address,
-  type
-) {
+          const address =
+            data.roadAddress ||
+            data.jibunAddress;
 
-
-  /*
-   * 카카오 SDK 확인
-   */
-
-  if (
-    typeof kakao === "undefined" ||
-    !kakao.maps
-  ) {
-
-    alert(
-      "카카오 지도 기능이 준비되지 않았습니다."
-    );
-
-    return;
-
-  }
-
-
-  /*
-   * 카카오 지도 로딩
-   */
-
-  kakao.maps.load(function() {
-
-
-    /*
-     * 주소 변환기
-     */
-
-    const geocoder =
-      new kakao.maps.services.Geocoder();
-
-
-    /*
-     * 주소 검색
-     */
-
-    geocoder.addressSearch(
-      address,
-      function(result, status) {
-
-
-        /*
-         * 좌표 변환 성공
-         */
-
-        if (
-          status ===
-          kakao.maps.services.Status.OK &&
-          result.length > 0
-        ) {
-
-
-          const coords = {
-
-            lat:
-              Number(result[0].y),
-
-            lng:
-              Number(result[0].x)
-
-          };
-
-
-          console.log(
-            type +
-            " 좌표:",
-            coords
-          );
-
-
-          /*
-           * 출발지 좌표 저장
-           */
 
           if (
-            type === "pickup"
+            currentAddressType === "pickup"
           ) {
 
-            pickupCoords =
-              coords;
+            document
+              .getElementById("pickupAddress")
+              .value = address;
 
           }
 
 
-          /*
-           * 도착지 좌표 저장
-           */
-
           if (
-            type === "dropoff"
+            currentAddressType === "dropoff"
           ) {
 
-            dropoffCoords =
-              coords;
+            document
+              .getElementById("dropoffAddress")
+              .value = address;
 
           }
 
 
+          closeAddressSearch();
+
+
           /*
-           * 두 주소가 모두 있으면
-           * 자동차 거리 계산
+           * 주소 → 좌표
            */
 
-          if (
-            pickupCoords &&
-            dropoffCoords
-          ) {
-
-            updateDistance();
-
-          }
-
-
-        } else {
-
-
-          console.error(
-            "좌표 변환 실패:",
+          geocodeAddress(
             address,
-            status
-          );
-
-
-          alert(
-            "주소 위치를 확인하지 못했습니다.\n" +
-            "주소를 다시 선택해주세요."
+            currentAddressType
           );
 
         }
 
-      }
-
-    );
-
-  });
-
-}
-
-
-
-/* =====================================================
-   자동차 주행거리 계산
-===================================================== */
-
-async function updateDistance() {
-
-
-  /*
-   * 두 좌표가 없으면 종료
-   */
-
-  if (
-    !pickupCoords ||
-    !dropoffCoords
-  ) {
-
-    return;
-
-  }
-
-
-  const status =
-    document.getElementById(
-      "distanceStatus"
-    );
-
-
-  const distanceElement =
-    document.getElementById(
-      "distanceValue"
-    );
-
-
-  const priceElement =
-    document.getElementById(
-      "estimatedPrice"
-    );
-
-
-  /*
-   * 계산 중 표시
-   */
-
-  status.textContent =
-    "자동차 주행거리를 계산하고 있습니다...";
-
-
-  distanceElement.textContent =
-    "...";
-
-
-  priceElement.textContent =
-    "계산 중";
-
-
-  try {
-
-
-    /*
-     * OSRM 자동차 길찾기 API
-     *
-     * 중요:
-     * 경도, 위도 순서
-     */
-
-   const url =
-  "https://routing.openstreetmap.de/routed-car/route/v1/driving/" +
-
-      pickupCoords.lng +
-      "," +
-      pickupCoords.lat +
-
-      ";" +
-
-      dropoffCoords.lng +
-      "," +
-      dropoffCoords.lat +
-
-      "?overview=false";
-
-
-    console.log(
-      "자동차 길찾기 요청:",
-      url
-    );
-
-
-    /*
-     * 서버 요청
-     */
-
-    const response =
-      await fetch(url);
-
-
-    /*
-     * 서버 오류 확인
-     */
-
-    if (!response.ok) {
-
-      throw new Error(
-        "길찾기 서버 오류: " +
-        response.status
+      }).embed(
+        document.getElementById("postcode")
       );
 
     }
 
 
-    /*
-     * 결과 JSON
-     */
 
-    const data =
-      await response.json();
+    /* =====================================================
+       주소 검색 닫기
+    ====================================================== */
+
+    function closeAddressSearch() {
+
+      document
+        .getElementById("addressModal")
+        .classList
+        .remove("active");
+
+    }
 
 
-    console.log(
-      "자동차 길찾기 결과:",
-      data
-    );
 
+    /* =====================================================
+       주소 → 좌표
+    ====================================================== */
 
-    /*
-     * 경로가 없으면 오류
-     */
-
-    if (
-      data.code !== "Ok" ||
-      !data.routes ||
-      data.routes.length === 0
+    function geocodeAddress(
+      address,
+      type
     ) {
 
-      throw new Error(
-        "자동차 경로를 찾을 수 없습니다."
-      );
+      kakao.maps.load(function() {
+
+        const geocoder =
+          new kakao.maps.services.Geocoder();
+
+
+        geocoder.addressSearch(
+          address,
+          function(result, status) {
+
+            if (
+              status ===
+                kakao.maps.services.Status.OK &&
+              result.length > 0
+            ) {
+
+              const coords = {
+
+                lat:
+                  parseFloat(result[0].y),
+
+                lng:
+                  parseFloat(result[0].x)
+
+              };
+
+
+              if (
+                type === "pickup"
+              ) {
+
+                pickupCoords =
+                  coords;
+
+              }
+
+
+              if (
+                type === "dropoff"
+              ) {
+
+                dropoffCoords =
+                  coords;
+
+              }
+
+
+              console.log(
+                type + " 좌표:",
+                coords
+              );
+
+
+              updateDistance();
+
+            }
+
+            else {
+
+              alert(
+                "주소의 위치 정보를 찾을 수 없습니다."
+              );
+
+              console.error(
+                "카카오 주소 → 좌표 변환 실패:",
+                status,
+                result
+              );
+
+            }
+
+          }
+
+        );
+
+      });
 
     }
 
 
-    /*
-     * 거리 계산
-     *
-     * OSRM은 meter로 제공
-     * → km로 변환
-     */
 
-    const distanceKm =
-      data.routes[0].distance / 1000;
+    /* =====================================================
+       자동차 주행거리 계산
+    ====================================================== */
 
+    async function updateDistance() {
 
-    /*
-     * 전역 거리 저장
-     */
 
-    window.currentDistance =
-      distanceKm;
+      const distanceElement =
+        document.getElementById(
+          "distance"
+        );
 
 
-    /*
-     * 화면에 거리 표시
-     */
+      const statusElement =
+        document.getElementById(
+          "distanceStatus"
+        );
 
-    distanceElement.textContent =
-      distanceKm.toFixed(1) +
-      " km";
 
+      const priceElement =
+        document.getElementById(
+          "estimatedPrice"
+        );
 
-    status.textContent =
-      "자동차 실제 도로 주행거리 기준";
 
+      /*
+       * 두 좌표가 모두 있어야 계산
+       */
 
-    /*
-     * 요금 계산
-     */
+      if (
+        !pickupCoords ||
+        !dropoffCoords
+      ) {
 
-    calculateQuote();
+        distanceElement.textContent =
+          "- km";
 
+        statusElement.textContent =
+          "출발지와 도착지를 선택해주세요.";
 
-  } catch (error) {
+        priceElement.textContent =
+          "주소를 선택해주세요";
 
+        return;
 
-    console.error(
-      "자동차 거리 계산 오류:",
-      error
-    );
+      }
 
 
-    window.currentDistance =
-      null;
+      distanceElement.textContent =
+        "계산 중...";
 
 
-    distanceElement.textContent =
-      "- km";
+      statusElement.textContent =
+        "자동차 주행거리를 계산하고 있습니다.";
 
 
-    status.textContent =
-      "자동차 주행거리 계산에 실패했습니다.";
+      try {
 
 
-    priceElement.textContent =
-      "전화 문의";
+        /*
+         * OpenStreetMap OSRM
+         */
 
+        const url =
+          "https://routing.openstreetmap.de/routed-car/route/v1/driving/" +
 
-  }
+          pickupCoords.lng +
+          "," +
+          pickupCoords.lat +
 
-}
+          ";" +
 
+          dropoffCoords.lng +
+          "," +
+          dropoffCoords.lat +
 
+          "?overview=false";
 
-/* =====================================================
-   추가 박스 수량
-===================================================== */
 
-function changeBox(amount) {
+        console.log(
+          "자동차 길찾기 요청:",
+          url
+        );
 
 
-  boxCount += amount;
+        const response =
+          await fetch(url);
 
 
-  /*
-   * 음수 방지
-   */
+        if (
+          !response.ok
+        ) {
 
-  if (
-    boxCount < 0
-  ) {
+          throw new Error(
+            "길찾기 서버 오류: " +
+            response.status
+          );
 
-    boxCount = 0;
+        }
 
-  }
 
+        const data =
+          await response.json();
 
-  /*
-   * 화면 표시
-   */
 
-  document
-    .getElementById(
-      "boxCount"
-    )
-    .textContent =
-    boxCount;
+        console.log(
+          "자동차 길찾기 결과:",
+          data
+        );
 
 
-  /*
-   * 요금 재계산
-   */
+        if (
+          data.code !== "Ok" ||
+          !data.routes ||
+          data.routes.length === 0
+        ) {
 
-  calculateQuote();
+          throw new Error(
+            "자동차 경로를 찾을 수 없습니다."
+          );
 
-}
+        }
 
 
+        /*
+         * meter → km
+         */
 
-/* =====================================================
-   배송요금 계산
-===================================================== */
+        const distanceKm =
+          data.routes[0].distance /
+          1000;
 
-function calculateQuote() {
 
+        window.currentDistance =
+          distanceKm;
 
-  /*
-   * 거리 확인
-   */
 
-  const distance =
-    window.currentDistance;
+        distanceElement.textContent =
+          distanceKm.toFixed(1) +
+          " km";
 
 
-  if (
-    typeof distance !== "number"
-  ) {
+        statusElement.textContent =
+          "자동차 실제 도로 주행거리 기준";
 
-    return;
 
-  }
+        calculateQuote();
 
 
-  /*
-   * 무게
-   */
+      }
 
-  const weight =
-    Number(
-      document.querySelector(
-        'input[name="weight"]:checked'
-      ).value
-    );
+      catch (error) {
 
 
-  /*
-   * 구매대행 매장 수
-   */
+        console.error(
+          "자동차 거리 계산 오류:",
+          error
+        );
 
-  const stores =
-    Number(
-      document.querySelector(
-        'input[name="store"]:checked'
-      ).value
-    );
 
+        window.currentDistance =
+          null;
 
-  /*
-   * 기본 배송요금
-   */
 
-  let basePrice = null;
+        distanceElement.textContent =
+          "- km";
 
 
+        statusElement.textContent =
+          "자동차 주행거리 계산에 실패했습니다.";
 
-  /* =========================
-     춘천지역
-  ========================= */
 
+        priceElement.textContent =
+          "전화 문의";
 
-  if (
-    distance <= 1.5
-  ) {
+      }
 
-    basePrice =
-      weight <= 5
-        ? 8000
-        : 10000;
+    }
 
-  }
 
 
-  else if (
-    distance <= 3
-  ) {
+    /* =====================================================
+       추가 박스
+    ====================================================== */
 
-    basePrice =
-      weight <= 5
-        ? 10000
-        : 13000;
+    function changeBox(
+      amount
+    ) {
 
-  }
+      boxCount += amount;
 
 
-  else if (
-    distance <= 5
-  ) {
+      if (
+        boxCount < 0
+      ) {
 
-    basePrice =
-      weight <= 5
-        ? 15000
-        : 18000;
+        boxCount = 0;
 
-  }
+      }
 
 
-  else if (
-    distance <= 8
-  ) {
+      document
+        .getElementById(
+          "boxCount"
+        )
+        .textContent =
+        boxCount;
 
-    basePrice =
-      weight <= 5
-        ? 18000
-        : 20000;
 
-  }
+      calculateQuote();
 
+    }
 
-  else if (
-    distance <= 15
-  ) {
 
-    basePrice =
-      weight <= 5
-        ? 20000
-        : 22000;
 
-  }
+    /* =====================================================
+       견적 계산
+    ====================================================== */
 
+    function calculateQuote() {
 
-  else if (
-    distance <= 20
-  ) {
 
-    basePrice =
-      weight <= 5
-        ? 23000
-        : 25000;
+      const distance =
+        window.currentDistance;
 
-  }
 
+      const priceElement =
+        document.getElementById(
+          "estimatedPrice"
+        );
 
 
-  /* =========================
-     장거리
-  ========================= */
+      if (
+        !distance
+      ) {
 
+        priceElement.textContent =
+          "주소를 선택해주세요";
 
-  else if (
-    distance <= 30
-  ) {
+        return;
 
-    basePrice =
-      weight <= 5
-        ? 40000
-        : 45000;
+      }
 
-  }
 
+      /*
+       * 무게
+       */
 
-  else if (
-    distance <= 40
-  ) {
+      const weight =
+        Number(
+          document.querySelector(
+            'input[name="weight"]:checked'
+          ).value
+        );
 
-    basePrice =
-      weight <= 5
-        ? 50000
-        : 55000;
 
-  }
+      /*
+       * 구매대행
+       */
 
+      const stores =
+        Number(
+          document.querySelector(
+            'input[name="store"]:checked'
+          ).value
+        );
 
-  else if (
-    distance <= 50
-  ) {
 
-    basePrice =
-      weight <= 5
-        ? 60000
-        : 65000;
+      let basePrice = null;
 
-  }
 
+      /*
+       * 춘천 시내
+       */
 
-  else if (
-    distance <= 80
-  ) {
+      if (
+        distance <= 1.5
+      ) {
 
-    basePrice =
-      weight <= 5
-        ? 90000
-        : 95000;
+        basePrice =
+          weight <= 5
+            ? 8000
+            : 10000;
 
-  }
+      }
 
+      else if (
+        distance <= 3
+      ) {
 
-  else if (
-    distance <= 100
-  ) {
+        basePrice =
+          weight <= 5
+            ? 10000
+            : 13000;
 
-    basePrice =
-      weight <= 5
-        ? 130000
-        : 140000;
+      }
 
-  }
+      else if (
+        distance <= 5
+      ) {
 
+        basePrice =
+          weight <= 5
+            ? 15000
+            : 18000;
 
-  else if (
-    distance <= 150
-  ) {
+      }
 
-    basePrice =
-      weight <= 5
-        ? 160000
-        : 170000;
+      else if (
+        distance <= 8
+      ) {
 
-  }
+        basePrice =
+          weight <= 5
+            ? 18000
+            : 20000;
 
+      }
 
-  else {
+      else if (
+        distance <= 15
+      ) {
 
+        basePrice =
+          weight <= 5
+            ? 20000
+            : 22000;
 
-    document
-      .getElementById(
-        "estimatedPrice"
-      )
-      .textContent =
-      "전화 문의";
+      }
 
+      else if (
+        distance <= 20
+      ) {
 
-    return;
+        basePrice =
+          weight <= 5
+            ? 23000
+            : 25000;
 
-  }
+      }
 
 
+      /*
+       * 장거리
+       *
+       * 20km 초과 ~ 30km
+       * → 30km 기준 요금 사용
+       */
 
-  /* =========================
-     구매대행 추가요금
-  ========================= */
+      else if (
+        distance <= 30
+      ) {
 
-  const storeFee =
-    stores * 3000;
+        basePrice =
+          weight <= 5
+            ? 40000
+            : 45000;
 
+      }
 
 
-  /* =========================
-     추가 박스 요금
-  ========================= */
+      else if (
+        distance <= 40
+      ) {
 
-  const boxFee =
-    boxCount * 3000;
+        basePrice =
+          weight <= 5
+            ? 50000
+            : 55000;
 
+      }
 
 
-  /* =========================
-     최종 예상요금
-  ========================= */
+      else if (
+        distance <= 50
+      ) {
 
-  const total =
-    basePrice +
-    storeFee +
-    boxFee;
+        basePrice =
+          weight <= 5
+            ? 60000
+            : 65000;
 
+      }
 
 
-  /*
-   * 화면 표시
-   */
+      else if (
+        distance <= 80
+      ) {
 
-  document
-    .getElementById(
-      "estimatedPrice"
-    )
-    .textContent =
-    total.toLocaleString(
-      "ko-KR"
-    ) +
-    "원";
+        basePrice =
+          weight <= 5
+            ? 90000
+            : 95000;
 
-}
+      }
 
 
-</script>
+      else if (
+        distance <= 100
+      ) {
+
+        basePrice =
+          weight <= 5
+            ? 130000
+            : 140000;
+
+      }
+
+
+      else if (
+        distance <= 150
+      ) {
+
+        basePrice =
+          weight <= 5
+            ? 160000
+            : 170000;
+
+      }
+
+
+      /*
+       * 150km 초과
+       */
+
+      else {
+
+        priceElement.textContent =
+          "전화 문의";
+
+        return;
+
+      }
+
+
+      /*
+       * 구매대행
+       */
+
+      const storeFee =
+        stores * 3000;
+
+
+      /*
+       * 추가 박스
+       */
+
+      const boxFee =
+        boxCount * 3000;
+
+
+      /*
+       * 최종
+       */
+
+      const total =
+        basePrice +
+        storeFee +
+        boxFee;
+
+
+      priceElement.textContent =
+        total.toLocaleString(
+          "ko-KR"
+        ) +
+        "원";
+
+
+    }
+
+  </script>
+
 
 </body>
 </html>
