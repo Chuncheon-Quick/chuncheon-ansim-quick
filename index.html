@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>춘천안심퀵서비스</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 14px;
+      color: #d1d5db;
+    }
+
+    .hero {
+      background: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .hero h2 span {
+      color: #2563eb;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .call {
+      background: #2563eb;
+      color: white;
+    }
+
+    .request {
+      background: #111827;
+      color: white;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 27px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .service {
+      background: white;
+      padding: 30px 15px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    .service .icon {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .service h3 {
+      margin-bottom: 8px;
+    }
+
+    .service p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .info {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      line-height: 2;
+    }
+
+    footer {
+      background: #111827;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .hero h2 {
+        font-size: 28px;
+      }
+
+      .services {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🚚 춘천안심퀵서비스</h1>
+    <p>춘천 전 지역 빠르고 안전한 퀵서비스</p>
+  </header>
+
+  <section class="hero">
+    <h2>
+      춘천 어디든<br>
+      <span>빠르고 안전하게!</span>
+    </h2>
+
+    <p>
+      오토바이부터 다마스·라보·용달까지<br>
+      고객님의 소중한 물건을 안전하게 전달합니다.
+    </p>
+
+    <div class="buttons">
+      <a href="tel:01000000000" class="btn call">
+        📞 전화 접수
+      </a>
+
+      <a href="#request" class="btn request">
+        📝 퀵서비스 접수
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>서비스 안내</h2>
+
+    <div class="services">
+
+      <div class="service">
+        <div class="icon">🏍️</div>
+        <h3>오토바이 퀵</h3>
+        <p>서류·소형 물품<br>빠른 당일 배송</p>
+      </div>
+
+      <div class="service">
+        <div class="icon">🚐</div>
+        <h3>다마스</h3>
+        <p>부피가 있는 물품도<br>안전하게 배송</p>
+      </div>
+
+      <div class="service">
+        <div class="icon">🚚</div>
+        <h3>라보·용달</h3>
+        <p>대형 물품 및<br>이사·화물 배송</p>
+      </div>
+
+      <div class="service">
+        <div class="icon">⚡</div>
+        <h3>긴급 배송</h3>
+        <p>급한 물품도<br>신속하게 대응</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="request">
+    <h2>춘천안심퀵서비스</h2>
+
+    <div class="info">
+      <p>📍 서비스 지역 : 춘천 전 지역</p>
+      <p>📦 서비스 : 오토바이 / 다마스 / 라보 / 용달</p>
+      <p>⏰ 운영시간 : 24시간 상담</p>
+      <p>📞 전화 문의 : 010-0000-0000</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 춘천안심퀵서비스. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
