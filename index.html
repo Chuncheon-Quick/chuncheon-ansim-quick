@@ -2112,17 +2112,39 @@
        * 최종
        */
 
-      const total =
-        basePrice +
-        storeFee +
-        boxFee;
+const total =
+  basePrice +
+  storeFee +
+  boxFee;
 
 
-      priceElement.textContent =
-        total.toLocaleString(
-          "ko-KR"
-        ) +
-        "원";
+/*
+ * 소비자 표시용 예상 견적 범위
+ *
+ * 시내 배송: +5,000원
+ * 장거리 배송: +20,000원
+ */
+
+let maxPrice;
+
+if (distance <= 20) {
+
+  // 시내 배송
+  maxPrice = total + 5000;
+
+} else {
+
+  // 장거리 배송
+  maxPrice = total + 20000;
+
+}
+
+
+priceElement.textContent =
+  total.toLocaleString("ko-KR") +
+  "원 ~ " +
+  maxPrice.toLocaleString("ko-KR") +
+  "원";
 
 
     }
