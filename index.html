@@ -616,14 +616,20 @@
       display: flex;
     }
 
-.modal-box {
-  width: 100%;
-  max-width: 500px;
-  height: min(600px, 85dvh);
-  background: white;
-  border-radius: 18px;
-  overflow: hidden;
-  position: relative;
+    .modal-box {
+      width: 100%;
+
+      max-width: 500px;
+
+      height: 600px;
+
+      background: white;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      position: relative;
     }
 
     .modal-close {
@@ -650,11 +656,9 @@
       cursor: pointer;
     }
 
-#postcode {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
+    #postcode {
+      width: 100%;
+      height: 100%;
     }
 
 
@@ -697,65 +701,16 @@
         grid-template-columns: 1fr;
       }
 
-.address-input {
-  flex-direction: row;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-}
+      .address-input {
+        flex-direction: column;
+      }
 
-.address-input input {
-  min-width: 0;
-  width: 100%;
-}
-
-.address-button {
-  padding: 12px;
-  flex-shrink: 0;
-}
+      .address-button {
+        padding: 12px;
       }
 
     }
-/* 모바일 화면 주소 입력 영역 보정 */
-* {
-  box-sizing: border-box;
-}
 
-@media (max-width: 600px) {
-
-  .form-group,
-  .address-group,
-  .address-row {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  #pickupAddress,
-  #dropoffAddress {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  #pickupAddress + button,
-  #dropoffAddress + button {
-    flex-shrink: 0;
-  }
-
-.modal-box {
-  width: 100vw;
-  max-width: 100vw;
-  height: min(600px, 85dvh);
-  border-radius: 18px;
-}
-
-  #postcode {
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-  }
-}
   </style>
 </head>
 
